@@ -4,10 +4,18 @@ Repeat a given string str (first argument) for num times (second argument). Retu
 For the purpose of this challenge, do not use the built-in .repeat() method.
 
 */
-
+/*
 function repeatStringNumTimes(str, num) {
-    const arr = []
+    str.reduce
   return str;
 }
 
 repeatStringNumTimes("abc", 3);
+*/
+
+
+function repeatStringNumTimes(str, num) {
+      return num < 1?"":Array(num).fill(str).map(s => s).join('');
+}
+
+console.log(repeatStringNumTimes("abc", 3))
