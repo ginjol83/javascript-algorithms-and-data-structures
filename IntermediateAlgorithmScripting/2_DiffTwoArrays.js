@@ -7,8 +7,10 @@ Note: You can return the array with its elements in any order.
 */
 
 function diffArray(arr1, arr2) {
-    const newArr = [];
-    return newArr;
+    const newArr1 = arr1.map(x=> arr2.includes(x)?' ':x).filter(x=>x!=' ')
+    const newArr2 = arr2.map(x=> arr1.includes(x)?' ':x).filter(x=>x!=' ')
+    return newArr1.concat(newArr2);
   }
+
   
-  diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
+diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5])
