@@ -10,7 +10,15 @@ and the second argument is { last: "Capulet" }, then you must return the third o
 name and its value, that was passed on as the second argument.
 */
 function whatIsInAName(collection, source) {
-
+    return collection.find(x=> {
+        console.log(Object.keys(x).hasOwnProperty(source))
+        console.log(x.hasOwnProperty(source))
+        console.log(x)
+        console.log(source)
+    })
 }
 
 whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
+
+//console.log(whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" })) 
+// debería regresar [{ first: "Tybalt", last: "Capulet" }].
