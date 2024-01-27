@@ -10,15 +10,23 @@ and the second argument is { last: "Capulet" }, then you must return the third o
 name and its value, that was passed on as the second argument.
 */
 function whatIsInAName(collection, source) {
-    return collection.find(x=> {
-        console.log(Object.keys(x).hasOwnProperty(source))
-        console.log(x.hasOwnProperty(source))
-        console.log(x)
-        console.log(source)
-    })
+    const sourceKey = Object.keys(source)
+    return collection.filter(x=>
+        sourceKey.every(y => x[y]===source[y])
+    )
 }
 
-whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
-
-//console.log(whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" })) 
 // debería regresar [{ first: "Tybalt", last: "Capulet" }].
+console.log(whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" }))
+
+// should return [{ "apple": 1, "bat": 2, "cookie": 2 }].
+console.log(whatIsInAName([{ "apple": 1, "bat": 2 }, { "apple": 1 }, { "apple": 1, "bat": 2, "cookie": 2 }], { "apple": 1, "cookie": 2 }))
+
+// should return [{ "apple": 1, "bat": 2 }, { "apple": 1, "bat": 2, "cookie":2 }].
+console.log(whatIsInAName([{ "apple": 1, "bat": 2 }, { "apple": 1 }, { "apple": 1, "bat": 2, "cookie": 2 }, { "bat":2 }], { "apple": 1, "bat": 2 }))
+
+// should return [] 
+console.log(whatIsInAName([{"a": 1, "b": 2, "c": 3}], {"a": 1, "b": 9999, "c": 3}))
+
+// should return []
+console.log(whatIsInAName([{"a": 1, "b": 2, "c": 3, "d": 9999}], {"a": 1, "b": 9999, "c": 3}))

@@ -5,8 +5,11 @@ Convert a string to spinal case. Spinal case is all-lowercase-words-joined-by-da
 */
 
 function spinalCase(str) {
-    return str.split('').map(x => x===' '?'-':x).join('');
-    //.toLowerCase()
+  
+    const lowers = str.split('').map(x => x===x.toUpperCase()?x.toLowerCase():x).join('');
+    console.log(lowers)
+
+    return lowers
   }
   
  console.log(spinalCase('This Is Spinal Tap'))
